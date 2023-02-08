@@ -139,6 +139,6 @@ with the `theme` variable.
 5. Use the optional callback function to ensure that the current state is based
    on the previous state
 
-[`useState`]: https://beta.reactjs.org/reference/usestate
+[`useState`]: https://beta.reactjs.org/reference/react/useState
 [CodeSandbox]: https://www.codesandbox.io
 [event handler]: https://beta.reactjs.org/learn/responding-to-events#adding-event-handlers
