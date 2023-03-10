@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import UseState from '../../components/UseState';
+import UseState from '../components/UseState';
 import '@testing-library/jest-dom';
 
 describe('BONUS: Theme Toggle in UseState component', () => {

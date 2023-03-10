@@ -14,7 +14,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-with-json": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --outputFile=./test/score.json --json  --testPathIgnorePatterns '__tests__/bonus'; node test/calculateScore.js"
+    "test-with-json": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --outputFile=./test/score.json --json  --testPathIgnorePatterns '__tests__/03'; node test/calculateScore.js"
   },
   "eslintConfig": {
     "extends": [
