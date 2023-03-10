@@ -28,7 +28,7 @@ To create state in your component, you will also need to import the `useState`
 hook from the `react` package. Place this import above your CSS import.
 
 ```js
-   import {useState} from 'react';
+   import { useState } from 'react';
 ```
 
 Inside your functional component, type `console.log(useState('light'))`. In
@@ -49,12 +49,18 @@ Look at the React DevTools in your sandbox browser. Click on the `UseState`
 component. Notice under `hooks` -> `State` you will see the string `light`. This
 is the default value you stored in state.
 
-You are now going to add this light theme to your JSX. Inside the `div` element,
-add a `className` and give it the value `theme`. Remember your curly braces for
-JavaScript.
+You are now going to add this light theme to your JSX. The outermost `div`
+element should have a `className` of `"state"`. Add the `theme` as another
+`className` to this `div`. The `div` should now look like this:
+
+```jsx
+<div className={`state ${theme}`}>
+```
 
 When you look at your browser you should see the light theme color as your
 background.
+
+If you run `npm test __tests__/theme`, the first test spec should now pass.
 
 ## Alternating the theme
 
@@ -62,7 +68,8 @@ You've used the `useState` hook to create a background color, but you have not
 yet used the updater function. Now you are going to create buttons that will
 allow the theme to either be light or dark.
 
-Beneath the `h1` tag, create a `button` element with the child text of `Dark`.
+Beneath the `h1` tag, the `button` element with the text of `Dark` should turn
+the theme `'dark'`.
 
 Inside the button you will use your first [event handler]. Create an `onClick`
 handler as an attribute to your button element. Remember that `onClick` handlers
@@ -73,37 +80,64 @@ invoked with the string argument `'dark'`.
 In the browser, click the button. Your background should now switch from light
 to dark.
 
-Repeat the same process to create a button for `Light`.
+If you run `npm test __tests__/theme`, the first two test specs should now pass.
 
-## Add a count slice of state
+Repeat the same process for the `Light` button which should `setTheme` to
+`'light'`.
+
+If you run `npm test __tests__/theme`, all three test specs should now pass.
+
+## Add a counter
 
 When you want to store information for a different concern in state, you simply
-add an additional slice of state to the component using `useState`.
+add an additional state variable to the component using another `useState` call.
 
-You now need a slice of state for a count. Create that slice using `count` and
-`setCount` as destructured indexes. Set the initial value to the number `0`.
+You now need a state variable to keep track of an ongoing number counter. Add
+a component state variable called `count` with `setCount` as its updater
+function. Use the `useState` hook. Set the initial value of the `count` state
+variable to the number `0`.
 
-Check your React DevTools to see that you now have a slice of state with the
-initial value of `"light"` and a slice of state with the initial value of `0`.
+Check your React DevTools to see that you now have state variable with the
+initial value of `"light"` and a state variable with the initial value of `0`.
 
-You also want to see a `0` as the count in your browser. Beneath the Dark
-button, create an `h1` element and use the `count` variable as the child
-element.
+You also want to see a `0` as the count in your browser. Replace
+`DISPLAY COUNT HERE` in the `h2` tag with the value of the `count` variable.
+Remember to use curly braces!
 
-Create a `button` element with the child text, `Increment`. Use an `onClick`
-event listener and the updater function for the count to increment the count.
+If you run `npm test __tests__/counter`, the first test spec should now pass.
+
+Add an `onClick` event listener to the `Increment` button that calls the updater
+function for the `count` to increment the `count` by `1` (turns `0` into `1`,
+or `1` into `2`, etc.).
 
 Test this button in your browser.
 
-Create a decrement button using the same technique.
+If you run `npm test __tests__/counter`, the first two test specs should now
+pass.
 
-## Optional Callback Function
+Add an `onClick` event listener to the `Decrement` button that will decrement
+the `count` by 1 (turns `0` into `-1`, or `-1` into `-2`, etc.) using the same
+technique.
+
+If you run `npm test __tests__/counter`, all three test specs should now pass.
+
+## Optional callback function
 
 An updater function returned by `useState` can take a callback function as an
-argument. The updater function will pass the previous state as an argument to
-the callback when invoking it. You are now going to use this feature with the
-`setCount` function to ensure that the state is updated based on the actual
-previous state.
+argument.
+
+```js
+// without callback function:
+setCount(10);       // sets the count to 10
+
+// with callback function:
+setCount(() => 10); // still sets the count to 10
+```
+
+The updater function will pass the previous state value that it updates as an
+argument to the callback when invoking it. You are now going to use this feature
+with the `setCount` function to ensure that the state is updated based on the
+actual previous state.
 
 Inside your `Increment` button `setCount` invocation, remove the `count + 1` and
 replace it with `(prevCount) => prevCount + 1`. Do the same for the `Decrement`
@@ -117,19 +151,24 @@ bundled together. In other words, without the callback, you cannot be sure that
 the value stored in `count` when the update is invoked will always represent the
 most current value.
 
-## Bonus A
+```js
+// without callback function:
+// increments the previous count value by 1
+setCount(count + 1);
+// works but not best practice
 
-Remove one of the buttons that changes the theme. Use the single remaining
-button to toggle the theme from light to dark.
+// with callback function:
+// still increments the previous count value by 1
+setCount(prevCount => prevCount + 1);
+// This is best practice when using the value of
+// the previous state to update the state.
+```
 
-## Bonus B
-
-Add the container `state` class from `UseState.css` to your wrapping `div` along
-with the `theme` variable.
+If you run `npm test __tests__/counter`, all three test specs should still pass!
 
 ## What you have learned
 
-**Congratulations!** In this practice you have learned how to
+__Congratulations!__ In this practice you have learned how to
 
 1. Create `state` using the `useState` hook
 2. Update `state` using the returned updater function
@@ -138,6 +177,15 @@ with the `theme` variable.
    is clicked
 5. Use the optional callback function to ensure that the current state is based
    on the previous state
+
+## BONUS
+
+Create a "Toggle Theme" button to replace the "Light" and "Dark" buttons. This
+button should conditionally turn the `theme` "light" if the `theme` is "dark"
+and should turn the `theme` "dark" if the `theme` is "light". Kind of like a
+light switch.
+
+If you run `npm test __tests__/bonus`, the test spec should pass.
 
 [`useState`]: https://beta.reactjs.org/reference/react/useState
 [CodeSandbox]: https://www.codesandbox.io
