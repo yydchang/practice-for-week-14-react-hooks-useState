@@ -1,3 +1,5 @@
+import './UseState.css';
+
 const UseState = () => {
   return (
     <div className="state">
