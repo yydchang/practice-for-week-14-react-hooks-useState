@@ -60,7 +60,11 @@ element should have a `className` of `"state"`. Add the `theme` as another
 When you look at your browser you should see the light theme color as your
 background.
 
-If you run `npm test __tests__/01`, the first test spec should now pass.
+If you are doing this project on CodeSandbox, then the first test spec in the
+__01-theme.test.js__ when clicking on the __Tests__ tab should now pass.
+
+If you are doing this project locally and you run `npm test __tests__/01`, the
+first test spec in the __01-theme.test.js__ should now pass.
 
 ## Alternating the theme
 
@@ -80,12 +84,12 @@ invoked with the string argument `'dark'`.
 In the browser, click the button. Your background should now switch from light
 to dark.
 
-If you run `npm test __tests__/01`, the first two test specs should now pass.
+The first two specs in __01-theme.test.js__ should now pass.
 
 Repeat the same process for the `Light` button which should `setTheme` to
 `'light'`.
 
-If you run `npm test __tests__/01`, all three test specs should now pass.
+All three specs in __01-theme.test.js__ should now pass.
 
 ## Add a counter
 
@@ -104,7 +108,11 @@ You also want to see a `0` as the count in your browser. Replace
 `DISPLAY COUNT HERE` in the `h2` tag with the value of the `count` variable.
 Remember to use curly braces!
 
-If you run `npm test __tests__/02`, the first test spec should now pass.
+If you are doing this project on CodeSandbox, then the first test spec in the
+__02-counter.test.js__ when clicking on the __Tests__ tab should now pass.
+
+If you are doing this project locally and you run `npm test __tests__/02`, the
+first test spec in the __02-counter.test.js__ should now pass.
 
 Add an `onClick` event listener to the `Increment` button that calls the updater
 function for the `count` to increment the `count` by `1` (turns `0` into `1`,
@@ -112,14 +120,13 @@ or `1` into `2`, etc.).
 
 Test this button in your browser.
 
-If you run `npm test __tests__/02`, the first two test specs should now
-pass.
+The first two specs in __02-counter.test.js__ should now pass.
 
 Add an `onClick` event listener to the `Decrement` button that will decrement
 the `count` by 1 (turns `0` into `-1`, or `-1` into `-2`, etc.) using the same
 technique.
 
-If you run `npm test __tests__/02`, all three test specs should now pass.
+All three specs in __02-counter.test.js__ should now pass.
 
 ## Optional callback function
 
@@ -164,7 +171,7 @@ setCount(prevCount => prevCount + 1);
 // the previous state to update the state.
 ```
 
-If you run `npm test __tests__/02`, all three test specs should still pass!
+All three specs in __02-counter.test.js__ should still pass!
 
 ## What you have learned
 
@@ -185,7 +192,11 @@ button should conditionally turn the `theme` "light" if the `theme` is "dark"
 and should turn the `theme` "dark" if the `theme` is "light". Kind of like a
 light switch.
 
-If you run `npm test __tests__/03`, the test spec should pass.
+If you are doing this project on CodeSandbox, then the test spec in the
+__03-toggle-theme.test.js__ when clicking on the __Tests__ tab should now pass.
+
+If you are doing this project locally and you run `npm test __tests__/03`, the
+test spec in the __03-toggle-theme.test.js__ should now pass.
 
 [`useState`]: https://beta.reactjs.org/reference/react/useState
 [CodeSandbox]: https://www.codesandbox.io
